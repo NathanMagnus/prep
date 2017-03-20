@@ -14,11 +14,15 @@ namespace code.prep.movies
 
 		public IEnumerable<Movie> all_movies()
 		{
-			return movies;
+			foreach(var movie in movies)
+				yield return movie;
 		}
 
 		public void add(Movie movie)
 		{
+			if (movies.Contains(movie))
+				return;
+
 			movies.Add(movie);
 		}
 
