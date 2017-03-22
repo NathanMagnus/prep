@@ -28,7 +28,7 @@ namespace code.web.features.list_people
 
 	public static class IDataStoreExtensions
 	{
-		public static Result GetResult<Result>(this IDataStore<Result> store, IFetchDataUsingTheRequest<Result> r)
+		public static Result GetResult<Result>(this IFetchDataUsingTheRequest<Result> r, IDataStore<Result> store)
 		{
 			return store.run(r);
 		}
@@ -66,7 +66,7 @@ namespace code.web.features.list_people
 
     public void process(IProvideDetailsAboutAWebRequest request)
 	  {
-      response.send(all_people_query(request));
+			response.send(all_people_query(request));
 	  }
   }
 }
