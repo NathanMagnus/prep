@@ -4,6 +4,7 @@ NUGET
       Machine.Fakes (>= 2.8.0-beta3)
       Machine.Specifications (>= 0.11)
       Machine.Specifications.Should (>= 0.11)
+    Faker.Net (1.0.3)
     Machine.Fakes (2.8)
       Machine.Specifications (>= 0.11) - framework: net40, >= net45, >= netstandard13
     Machine.Fakes.RhinoMocks (2.8)
@@ -29,6 +30,7 @@ NUGET
       Microsoft.NETCore.Platforms (>= 1.1) - framework: >= netstandard13
       Microsoft.NETCore.Targets (>= 1.1) - framework: >= netstandard13
       System.Runtime (>= 4.3) - framework: >= netstandard13
+    MySql.ConnectorNET.Data (6.8.3.2)
     NETStandard.Library (1.6.1) - framework: >= netstandard13
       Microsoft.NETCore.Platforms (>= 1.1) - framework: >= netstandard10
       Microsoft.Win32.Primitives (>= 4.3) - framework: >= net46, >= netstandard13
