@@ -22,7 +22,10 @@ namespace code.web.features.list_people
 			private Establish c = () =>
 			{
 				query = fake.an<IFetchDataUsingTheRequest<IEnumerable<Person>>>();
+				depends.on(query);
+
 				dataStore = depends.on<IDataStore<IEnumerable<Person>>>();
+				dataStore.setup(x => x.run(query)).Return(Enumerable.Range(1, 100).Select(x => new Person()));
 			};
 
 			private Because b = () =>

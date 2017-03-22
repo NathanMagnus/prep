@@ -6,17 +6,6 @@ using code.web.stubs;
 
 namespace code.web.features.list_people
 {
-	public static class IFetchDataUsingTheRequestExtensions
-	{
-		public static IFetchDataUsingTheRequest<Response> query<Response>(this IProvideDetailsAboutAWebRequest request)
-		{
-			
-		}
-
-		// get the data layer
-		// get info from the data layer
-	}
-
 	public interface IGetDataFromDataStore<Result>
 	{
 		Result GetDataFromDataStore(IFetchDataUsingTheRequest<Result> query);
