@@ -55,10 +55,10 @@ namespace code.utility.iteration
         var zero = Expression.Constant(0);
         var two = Expression.Constant(2);
         var parameter = Expression.Parameter(typeof(int), "x");
-        var mod = Expression.Modulo(two, parameter);
+        var mod = Expression.Modulo(parameter, two);
         var is_equal = Expression.Equal(mod, zero);
 
-        var lambda = Expression.Lambda<Func<int, bool>>(null, null);
+        var lambda = Expression.Lambda<Func<int, bool>>(is_equal, );
 
         var instance = lambda.Compile();
         instance(2).ShouldBeTrue();
