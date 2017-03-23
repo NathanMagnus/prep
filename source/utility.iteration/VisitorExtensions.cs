@@ -9,7 +9,7 @@ namespace code.utility.iteration
     public static Result sum<Element, Result>(this IEnumerable<Element> items,
       IGetTheValueOfAProperty<Element, Result> accessor)
     {
-	    return get_result_of_processing_all_with(items, new Visitor<Element>(accessor));
+	    return get_result_of_processing_all_with(items, new Visitor<Element, Result>(accessor));
     }
 
     public static Result get_result_of_processing_all_with<Element, Result>(this IEnumerable<Element> items,

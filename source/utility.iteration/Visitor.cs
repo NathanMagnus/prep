@@ -15,7 +15,7 @@ namespace code.utility.iteration
 
 		public void process(Element value)
 		{
-			var v = accessor(value);
+			dynamic v = accessor(value);
 			sum += v;
 		}
 

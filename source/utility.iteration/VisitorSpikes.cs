@@ -79,11 +79,6 @@ namespace code.utility.iteration
 
     public class when_calculating_the_sum_of_an_attribute : concern_for_working_with_sets
     {
-			Establish c = () =>
-			{
-				visitor.setup(x => x.get_result()).Return(expected_result);
-			};
-
 			Because b = () =>
         result = values.sum(x => x.age);
 
