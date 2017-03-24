@@ -1,4 +1,8 @@
-﻿using System.Data;
+﻿using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using code.prep.people;
+using code.web.core.stubs;
 using developwithpassion.specifications.assertions.core;
 using developwithpassion.specifications.assertions.interactions;
 using Machine.Specifications;
@@ -54,6 +58,47 @@ namespace code.data.core
 
     public class SomeItem
     {
+    }
+
+    public class integration
+    {
+      public class concern_for_integration : concern
+      {
+        Establish c = () =>
+        {
+          depends.on(Stubs.connection_factory); 
+        }; 
+      }
+
+      public class when_fetching_a_list_of_people : concern_for_integration
+      {
+        Because b = () =>
+          results = sut.run(new GetPeople());
+
+        It returns_a_set_of_people_from_the_database = () =>
+          results.Count().ShouldBeGreaterThan(0);
+
+        static IEnumerable<Person> results;
+           
+      }
+    }
+  }
+
+  class GetPeople : IRunAQuery<IEnumerable<Person>>
+  {
+    public void prepare(IDbCommand command)
+    {
+      command.CommandType = CommandType.Text;
+      command.CommandText = "select * from people";
+    }
+
+    public IEnumerable<Person> map(IDataReader reader)
+    {
+      var table = new DataTable();
+      table.Load(reader);
+
+      foreach (DataRow row in table.Rows)
+        yield return new Person {first_name = row["first_name"].ToString()};
     }
   }
 }

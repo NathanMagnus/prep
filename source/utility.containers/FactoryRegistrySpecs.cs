@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using code.utility.containers;
 using Machine.Specifications;
 using spec = developwithpassion.specifications.use_engine<Machine.Fakes.Adapters.Rhinomocks.RhinoFakeEngine>;
 
-namespace Namespace
+namespace code.utility.containers
 {
   [Subject(typeof(FactoryRegistry))]
   public class FactoryRegistrySpecs

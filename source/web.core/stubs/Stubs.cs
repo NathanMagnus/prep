@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
 using System.IO;
 using System.Web;
 using code.api.v1.people.list.get;
+using code.data.core;
 using code.prep.people;
 using code.test_utilities;
 using code.web.adapters;
+using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 
 namespace code.web.core.stubs
@@ -13,6 +17,8 @@ namespace code.web.core.stubs
   public class Stubs
   {
     public static ICreateARequestFromAnASPNetRequest aspnet_request_builder = x => new StubRequest();
+
+    public static ICreateDbConnections connection_factory = new StubConnectionFactory();
 
     public static ICreateAMissingCommandWhenOneCantBeFound missing_request_builder = delegate
     {
@@ -52,6 +58,14 @@ namespace code.web.core.stubs
       {
         serialize.Serialize(writer, data);
       }
+    }
+  }
+
+  public class StubConnectionFactory : ICreateDbConnections
+  {
+    public IDbConnection create()
+    {
+      return new MySqlConnection(ConfigurationManager.ConnectionStrings["code"].ConnectionString);
     }
   }
 
