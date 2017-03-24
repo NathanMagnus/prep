@@ -4,4 +4,6 @@
 
 2. Implement the remainder of the Query Gateway design
 
-3. Drive out design of dependency injection utility that we can leverage to take advantage of rich object construction.
+3. Complete dependency injection utility
+
+4. Implement routing mechanism that can support our "Critieria" based routing approach. Consider using convention over configuration as a means to automatically have new "routes" registered.
