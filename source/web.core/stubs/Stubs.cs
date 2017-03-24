@@ -21,8 +21,14 @@ namespace code.web.core.stubs
 
     public static IEnumerable<IHandleOneWebRequest> dummy_set_of_handlers()
     {
-      yield return new RequestHandler(x => true, new Handler());
+      yield return create_query_handler<Query, Input, IEnumerable<Person>>();
+      yield return create_query_handler<api.v1.people._id.get.Query, api.v1.people._id.get.Input, Person>();
     }
+
+    public static IHandleOneWebRequest create_query_handler<QueryObject, Input, Report>() where QueryObject : IFetchData<Input, Report>, new()
+    {
+      return new RequestHandler(x => true, new FetchDataUsingInput<Input, Report>(new QueryObject(), dummy_response_engine())); 
+    } 
 
     public static IFetchDataUsingTheRequest<IEnumerable<Person>> dummy_list_of_people = x => Factories.generate(200, 
       y => Factories.create_person());
@@ -51,6 +57,9 @@ namespace code.web.core.stubs
 
   public class StubRequest : IProvideDetailsAboutAWebRequest
   {
-
+    public InputModel map<InputModel>()
+    {
+      return Activator.CreateInstance<InputModel>();
+    }
   }
 }

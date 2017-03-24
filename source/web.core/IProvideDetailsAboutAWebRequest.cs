@@ -2,6 +2,6 @@
 {
   public interface IProvideDetailsAboutAWebRequest
   {
-     
+    InputModel map<InputModel>();
   }
 }

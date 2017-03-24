@@ -1,5 +1,4 @@
 ﻿using Machine.Specifications;
-using developwithpassion.specifications.assertions.core;
 using spec = developwithpassion.specifications.use_engine<Machine.Fakes.Adapters.Rhinomocks.RhinoFakeEngine>;
 
 namespace code.utility.containers
@@ -9,10 +8,9 @@ namespace code.utility.containers
   {
     public abstract class concern : spec.observe
     {
-
     }
 
-    public class when_initiating_a_call_to_fetch_a_dependency  : concern
+    public class when_initiating_a_call_to_fetch_a_dependency : concern
     {
       Establish c = () =>
       {

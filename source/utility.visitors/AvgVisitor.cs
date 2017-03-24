@@ -2,23 +2,23 @@
 {
   public class AvgVisitor<Element, Result> : IProcessAndReturnAValue<Element, Result>
   {
-    IProcessAndReturnAValue<Element, Result> summer;
+    IProcessAndReturnAValue<Element, Result> reducer;
     int count;
 
-    public AvgVisitor(IProcessAndReturnAValue<Element, Result> visitor)
+    public AvgVisitor(IProcessAndReturnAValue<Element, Result> reducer)
     {
-      this.summer = visitor;
+      this.reducer = reducer;
     }
 
     public void process(Element value)
     {
-      summer.process(value);
+      reducer.process(value);
       count++;
     }
 
     public Result get_result()
     {
-      return (dynamic) summer.get_result()/count;
+      return (dynamic) reducer.get_result()/count;
     }
   }
 }
