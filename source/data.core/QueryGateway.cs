@@ -20,6 +20,7 @@ namespace code.data.core
       {
         query.prepare(command);
         connection.Open();
+
         return mapper.from<IDataReader, QueryResult>(command.ExecuteReader(CommandBehavior.CloseConnection));
       }
     }
