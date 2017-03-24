@@ -18,7 +18,6 @@ namespace code.data.core
       Establish c = () =>
       {
         db_connection_factory = depends.on<ICreateDbConnections>();
-        mapper = depends.on<IMap>();
         query = fake.an<IRunAQuery<SomeItem>>();
         connection = fake.an<IDbConnection>();
         reader = fake.an<IDataReader>();
@@ -27,9 +26,8 @@ namespace code.data.core
         db_connection_factory.setup(x => x.create()).Return(connection);
         connection.setup(x => x.CreateCommand()).Return(command);
 
-        command.setup(x => x.ExecuteReader(CommandBehavior.CloseConnection)).Return(reader);
-        mapper.setup(x => x.from<IDataReader,SomeItem>(reader)).Return(mapped_item);
-
+        command.setup(x => x.ExecuteReader()).Return(reader);
+        query.setup(x => x.map(reader)).Return(mapped_item);
       };
 
       Because b = () =>
